@@ -1,0 +1,154 @@
+{
+    "info": {
+        "description": "retrain tpl"
+    },
+    "images": [
+        {
+            "id": 1,
+            "path": "C:/Users/skv/PycharmProjects/SymbolicSystem/dataset/test/zyy_5.png",
+            "width": 928,
+            "height": 928,
+            "file_name": "zyy_5.png"
+        }
+    ],
+    "annotations": [
+        {
+            "id": 0,
+            "image_id": 1,
+            "category_id": 12,
+            "area": 36078.165652275085,
+            "bbox": [
+                325.67291259765625,
+                450.59930419921875,
+                209.734375,
+                172.01837158203125
+            ],
+            "iscrowd": false,
+            "isbbox": true,
+            "color": "#17b212",
+            "metadata": {}
+        },
+        {
+            "id": 1,
+            "image_id": 1,
+            "category_id": 11,
+            "area": 35580.59936986491,
+            "bbox": [
+                291.0032653808594,
+                268.109130859375,
+                215.0758056640625,
+                165.43283081054688
+            ],
+            "iscrowd": false,
+            "isbbox": true,
+            "color": "#17b212",
+            "metadata": {}
+        },
+        {
+            "id": 2,
+            "image_id": 1,
+            "category_id": 13,
+            "area": 39235.331752344966,
+            "bbox": [
+                333.86279296875,
+                645.6951904296875,
+                209.42498779296875,
+                187.347900390625
+            ],
+            "iscrowd": false,
+            "isbbox": true,
+            "color": "#17b212",
+            "metadata": {}
+        },
+        {
+            "id": 3,
+            "image_id": 1,
+            "category_id": 10,
+            "area": 52325.51730225561,
+            "bbox": [
+                228.92698669433594,
+                45.36700439453125,
+                250.7807159423828,
+                208.65048217773438
+            ],
+            "iscrowd": false,
+            "isbbox": true,
+            "color": "#17b212",
+            "metadata": {}
+        }
+    ],
+    "categories": [
+        {
+            "id": 3,
+            "name": "t9",
+            "supercategory": "",
+            "color": "#a0531e",
+            "metadata": {},
+            "keypoint_colors": []
+        },
+        {
+            "id": 6,
+            "name": "t10",
+            "supercategory": "",
+            "color": "#1613a0",
+            "metadata": {},
+            "keypoint_colors": []
+        },
+        {
+            "id": 7,
+            "name": "t11",
+            "supercategory": "",
+            "color": "#4be927",
+            "metadata": {},
+            "keypoint_colors": []
+        },
+        {
+            "id": 8,
+            "name": "t12",
+            "supercategory": "",
+            "color": "#5607df",
+            "metadata": {},
+            "keypoint_colors": []
+        },
+        {
+            "id": 9,
+            "name": "l1",
+            "supercategory": "",
+            "color": "#f022d5",
+            "metadata": {},
+            "keypoint_colors": []
+        },
+        {
+            "id": 10,
+            "name": "l2",
+            "supercategory": "",
+            "color": "#f65eaa",
+            "metadata": {},
+            "keypoint_colors": []
+        },
+        {
+            "id": 11,
+            "name": "l3",
+            "supercategory": "",
+            "color": "#b4f150",
+            "metadata": {},
+            "keypoint_colors": []
+        },
+        {
+            "id": 12,
+            "name": "l4",
+            "supercategory": "",
+            "color": "#1b2ba6",
+            "metadata": {},
+            "keypoint_colors": []
+        },
+        {
+            "id": 13,
+            "name": "l5",
+            "supercategory": "",
+            "color": "#c6f15a",
+            "metadata": {},
+            "keypoint_colors": []
+        }
+    ]
+}

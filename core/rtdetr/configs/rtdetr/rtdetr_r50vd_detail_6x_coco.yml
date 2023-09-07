@@ -1,0 +1,9 @@
+_BASE_:
+- ../datasets/coco_detail_detection.yml
+- ../runtime.yml
+- _base_/optimizer_6x.yml
+- _base_/rtdetr_r50vd.yml
+- _base_/rtdetr_reader.yml
+find_unused_parameters: true
+log_iter: 200
+weights: C:/Users/skv/PycharmProjects/SymbolicSystem/model/detail

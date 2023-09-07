@@ -1,0 +1,143 @@
+# ITK的预训练模型数据集配置信息(T10、T11、T12、L1、L2、L3、L4、L5)
+metric: COCO
+num_classes: 8
+
+TrainDataset:
+  name: COCODataSet
+  image_dir: train2023
+  anno_path: annotations/vertebrae_keypoints_train2023.json
+  dataset_dir: /home/jjf/Desktop/HRNet/dataset2
+  data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
+
+EvalDataset:
+  name: COCODataSet
+  image_dir: val2023
+  anno_path: annotations/vertebrae_keypoints_val2023.json
+  dataset_dir: /home/jjf/Desktop/HRNet/dataset2
+  allow_empty: true
+
+TestDataset:
+  name: ImageFolder
+  anno_path: annotations/vertebrae_keypoints_test2023.json # also support txt (like VOC's label_list.txt)
+  dataset_dir: /home/jjf/Desktop/HRNet/dataset2 # if set, anno_path will be 'dataset_dir/anno_path'
+
+
+# 真实标签模型（T10、T11、T12、L1、L2、L3、L4、L5）
+metric: COCO
+num_classes: 8
+
+TrainDataset:
+  name: COCODataSet
+  image_dir: train
+  anno_path: annotations/bbox_train.json
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/Real_X_Ray
+  data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
+
+EvalDataset:
+  name: COCODataSet
+  image_dir: val
+  anno_path: annotations/bbox_val.json
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/Real_X_Ray
+  allow_empty: true
+
+TestDataset:
+  name: ImageFolder
+  anno_path: annotations/bbox_test.json # also support txt (like VOC's label_list.txt)
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/Real_X_Ray # if set, anno_path will be 'dataset_dir/anno_path'
+
+
+
+# 伪标签模型1（vertebrae、pelvis、rib、bone_cement、steel_wire、screws、duct、artifact）
+metric: COCO
+num_classes: 8
+
+TrainDataset:
+  name: COCODataSet
+  image_dir: train
+  anno_path: annotations/bbox_train.json
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/All_X_Ray
+  data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
+
+EvalDataset:
+  name: COCODataSet
+  image_dir: val
+  anno_path: annotations/bbox_val.json
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/All_X_Ray
+  allow_empty: true
+
+TestDataset:
+  name: ImageFolder
+  anno_path: annotations/bbox_test.json # also support txt (like VOC's label_list.txt)
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/All_X_Ray # if set, anno_path will be 'dataset_dir/anno_path'
+
+
+# 伪标签模型2(verte_front、verte_side、pelvis、rib、bone_cement、artifacts)
+metric: COCO
+num_classes: 6
+
+TrainDataset:
+  name: COCODataSet
+  image_dir: train
+  anno_path: annotations/bbox_train.json
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/All_X_Ray1
+  data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
+
+EvalDataset:
+  name: COCODataSet
+  image_dir: val
+  anno_path: annotations/bbox_val.json
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/All_X_Ray1
+  allow_empty: true
+
+TestDataset:
+  name: ImageFolder
+  anno_path: annotations/bbox_test.json # also support txt (like VOC's label_list.txt)
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/All_X_Ray1 # if set, anno_path will be 'dataset_dir/anno_path'
+
+
+# 不具体标签模型No_Specific_Label（vertebrae、pelvis、rib、bone_cement、artifacts）
+metric: COCO
+num_classes: 5
+
+TrainDataset:
+  name: COCODataSet
+  image_dir: train
+  anno_path: annotations/bbox_train.json
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/No_Specific_Label
+  data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
+
+EvalDataset:
+  name: COCODataSet
+  image_dir: val
+  anno_path: annotations/bbox_val.json
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/No_Specific_Label
+  allow_empty: true
+
+TestDataset:
+  name: ImageFolder
+  anno_path: annotations/bbox_test.json # also support txt (like VOC's label_list.txt)
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/No_Specific_Label # if set, anno_path will be 'dataset_dir/anno_path'
+
+
+# 不具体标签模型No_Specific_Label（vertebrae、pelvis、rib、bone_cement、artifacts）
+metric: COCO
+num_classes: 13
+
+TrainDataset:
+  name: COCODataSet
+  image_dir: train
+  anno_path: annotations/bbox_train.json
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/Real_Label
+  data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
+
+EvalDataset:
+  name: COCODataSet
+  image_dir: val
+  anno_path: annotations/bbox_val.json
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/Real_Label
+  allow_empty: true
+
+TestDataset:
+  name: ImageFolder
+  anno_path: annotations/bbox_test.json # also support txt (like VOC's label_list.txt)
+  dataset_dir: /home/jjf/Desktop/RT-DETR/rtdetr_paddle/datasets/Real_Label # if set, anno_path will be 'dataset_dir/anno_path'
