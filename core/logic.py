@@ -32,14 +32,14 @@ class logic:
     def __init__(self, coco_data):
         self.coco_data = coco_data
 
-    def resolve_all_logic(self, accept_list, image_file):
+    def resolve_all_logic(self, accept_list, image_file, coco_detail_data):
         get_basic_fact(self.coco_data.frontal_vertebral_data, self.coco_data.pelvis_data, self.coco_data.rib_data,
                        self.coco_data.artifact_data)
         self.is_prior = get_prior_knowledge(image_file, self.coco_data.artifact_data)
         if len(self.coco_data.frontal_vertebral_data) != 0:
-            self.resolve_front_logic(accept_list)
+            self.resolve_front_logic(accept_list, coco_detail_data)
 
-    def resolve_front_logic(self, accept_list):
+    def resolve_front_logic(self, accept_list, coco_detail_data):
         get_all_overlap_to_logic(self.coco_data.frontal_vertebral_data, 0.5)
         get_all_overlap_to_logic(self.coco_data.rib_data, 0.5)
         get_all_overlap_to_logic(self.coco_data.pelvis_data, 0.5)
@@ -50,13 +50,13 @@ class logic:
         resolve_overlap(self.coco_data.artifact_data)
         get_distant_point(self.coco_data.frontal_vertebral_data)
         resolve_distant_point(self.coco_data.frontal_vertebral_data)
-        get_near_fact(self.is_prior, self.coco_data.frontal_vertebral_data, self.coco_data.pelvis_data, self.coco_data.rib_data, self.coco_data.artifact_data)
+        get_near_fact(self.is_prior, self.coco_data.frontal_vertebral_data, self.coco_data.pelvis_data,
+                      self.coco_data.rib_data, self.coco_data.artifact_data, coco_detail_data)
         get_loc_logic(self.coco_data.frontal_vertebral_data)
         resolve_accept_list(self.coco_data.frontal_vertebral_data, accept_list)
 
     def get_result(self):
         all_accept = True
-
         prolog.asserta("dhash_vertebra(-1, -1)")
         # result = list(prolog.query(f"lower(A, B)"))
         for entry in self.coco_data.frontal_vertebral_data:

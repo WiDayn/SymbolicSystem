@@ -6,7 +6,10 @@ vertebra(B, l5) :-
     is_vertebra(B),
     is_closest(A, B))
     ;
-    dhash_vertebra(B, l5)).
+    dhash_vertebra(B, l5)
+    ;
+    from_detail(B, l5)
+    ).
 
 vertebra_from_top(B, l5) :-
     (
@@ -18,6 +21,8 @@ vertebra_from_top(B, l5) :-
         )
     ;
     dhash_vertebra(B, l5)
+    ;
+    from_detail(B, l5)
     ).
 
 vertebra(B, l4) :-
@@ -115,7 +120,9 @@ vertebra(B, l1) :-
     (is_vertebra(B),
     (l1_condition_1(B) ; l1_condition_2(B)))
     ;
-    dhash_vertebra(B, l1).
+    dhash_vertebra(B, l1)
+    ;
+    from_detail(B, l1).
 
 vertebra_from_top(B, l1) :-
     prior_l1(B, l1),
@@ -128,14 +135,20 @@ vertebra_from_top(B, l1) :-
         )
     ;
     dhash_vertebra(B, l1)
+    ;
+    from_detail(B, l1)
     ).
 
 vertebra(B, t12) :-
+    (
     is_vertebra(A),
     is_vertebra(B),
     is_adjacent(A, B),
     vertebra(A, l1),
-    higher(B, A).
+    higher(B, A)
+    )
+    ;
+    from_detail(B, t12).
 
 vertebra_from_top(B, t12) :-
     (
@@ -147,6 +160,8 @@ vertebra_from_top(B, t12) :-
         )
     ;
     dhash_vertebra(B, t12)
+    ;
+    from_detail(B, t12)
     ).
 
 vertebra(B, t11) :-

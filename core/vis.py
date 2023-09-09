@@ -34,50 +34,50 @@ class vis:
                     color='r', fontsize=8, backgroundcolor='w'
                 )
 
-        for entry in pelvis_list:
-            if not entry['enable']:
-                continue
-            bbox = entry['bbox']
-            rect = patches.Rectangle(
-                (bbox[0], bbox[1]), bbox[2], bbox[3],
-                linewidth=1, edgecolor='r', facecolor='none'
-            )
-            self.ax.add_patch(rect)
-            plt.text(
-                bbox[0], bbox[1],
-                f"pelvis {round(entry['score'], 2)}",
-                color='r', fontsize=8, backgroundcolor='w'
-            )
-
-        for entry in rib_list:
-            if not entry['enable']:
-                continue
-            bbox = entry['bbox']
-            rect = patches.Rectangle(
-                (bbox[0], bbox[1]), bbox[2], bbox[3],
-                linewidth=1, edgecolor='r', facecolor='none'
-            )
-            self.ax.add_patch(rect)
-            plt.text(
-                bbox[0], bbox[1],
-                f"rib {round(entry['score'], 2)}",
-                color='r', fontsize=8, backgroundcolor='w'
-            )
-
-        for entry in artifact_list:
-            if not entry['enable']:
-                continue
-            bbox = entry['bbox']
-            rect = patches.Rectangle(
-                (bbox[0], bbox[1]), bbox[2], bbox[3],
-                linewidth=1, edgecolor='r', facecolor='none'
-            )
-            self.ax.add_patch(rect)
-            plt.text(
-                bbox[0], bbox[1],
-                f"artifact {round(entry['score'], 2)}",
-                color='r', fontsize=8, backgroundcolor='w'
-            )
+        # for entry in pelvis_list:
+        #     if not entry['enable']:
+        #         continue
+        #     bbox = entry['bbox']
+        #     rect = patches.Rectangle(
+        #         (bbox[0], bbox[1]), bbox[2], bbox[3],
+        #         linewidth=1, edgecolor='r', facecolor='none'
+        #     )
+        #     self.ax.add_patch(rect)
+        #     plt.text(
+        #         bbox[0], bbox[1],
+        #         f"pelvis {round(entry['score'], 2)}",
+        #         color='r', fontsize=8, backgroundcolor='w'
+        #     )
+        #
+        # for entry in rib_list:
+        #     if not entry['enable']:
+        #         continue
+        #     bbox = entry['bbox']
+        #     rect = patches.Rectangle(
+        #         (bbox[0], bbox[1]), bbox[2], bbox[3],
+        #         linewidth=1, edgecolor='r', facecolor='none'
+        #     )
+        #     self.ax.add_patch(rect)
+        #     plt.text(
+        #         bbox[0], bbox[1],
+        #         f"rib {round(entry['score'], 2)}",
+        #         color='r', fontsize=8, backgroundcolor='w'
+        #     )
+        #
+        # for entry in artifact_list:
+        #     if not entry['enable']:
+        #         continue
+        #     bbox = entry['bbox']
+        #     rect = patches.Rectangle(
+        #         (bbox[0], bbox[1]), bbox[2], bbox[3],
+        #         linewidth=1, edgecolor='r', facecolor='none'
+        #     )
+        #     self.ax.add_patch(rect)
+        #     plt.text(
+        #         bbox[0], bbox[1],
+        #         f"artifact {round(entry['score'], 2)}",
+        #         color='r', fontsize=8, backgroundcolor='w'
+        #     )
 
         if result_save_method == "file":
             plt.savefig(f'{save_file_path}/'

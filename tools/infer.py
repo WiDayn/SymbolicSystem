@@ -29,7 +29,7 @@ if __name__ == "__main__":
             coco_data = core.coco.cocoData()
             now_id = coco_data.init(json_path, image_file, now_id, False)
             logic = core.logic.logic(coco_data)
-            logic.resolve_all_logic(accept_list, image_file)
+            logic.resolve_all_logic(accept_list, image_file, coco_detail_data)
             all_accept = logic.get_result()
             logic.add_result_to_accept_list(accept_list)
             logic.coco_data.save_coco_result(image_file)

@@ -110,6 +110,7 @@ def get_basic_fact(vertebral_list, pelvis_list, rib_list, artifact_list):
     prolog.asserta(f"is_vertebra(-1)")
     prolog.asserta(f"is_rib(-1)")
     prolog.asserta(f"is_artifact(-1)")
+    prolog.asserta(f"from_detail(-1, t12)")
     for pelvis in pelvis_list:
         if not pelvis['enable']:
             continue
@@ -131,7 +132,7 @@ def get_basic_fact(vertebral_list, pelvis_list, rib_list, artifact_list):
         prolog.asserta(f"is_artifact({artifact['id']})")
 
 
-def get_near_fact(is_prior, vertebral_list, pelvis_list, rib_list, artifact_list):
+def get_near_fact(is_prior, vertebral_list, pelvis_list, rib_list, artifact_list, coco_detail_data):
     prolog.asserta(f"is_adjacent(-1, -1)")
     prolog.asserta(f"is_closest(-1, -1)")
     bone_line_slope, bone_line_intercept = get_bone_line(vertebral_list)
@@ -164,25 +165,38 @@ def get_near_fact(is_prior, vertebral_list, pelvis_list, rib_list, artifact_list
             if not artifact['enable']:
                 continue
             point = nearest_point(vertebral_list, artifact)
-
             if nearest_point is not None:
                 prolog.asserta(f"is_closest({artifact['id']}, {point['id']})")
     else:
-        for i, pelvis in enumerate(pelvis_list):
-            if not pelvis['enable']:
-                continue
-            point = nearest_point(vertebral_list, pelvis)
+        if len(coco_detail_data.l5) != 0 or len(coco_detail_data.l1) != 0 or len(coco_detail_data.t12) != 0:
+            for vertebral in vertebral_list:
+                if not vertebral['enable']:
+                    continue
+                for l5 in coco_detail_data.l5:
+                    if check_overlap(vertebral['bbox'], l5['bbox'], 0.9):
+                        prolog.asserta(f"from_detail({vertebral['id']}, l5)")
+                for l1 in coco_detail_data.l1:
+                    if check_overlap(vertebral['bbox'], l1['bbox'], 0.9):
+                        prolog.asserta(f"from_detail({vertebral['id']}, l1)")
+                for t12 in coco_detail_data.t12:
+                    if check_overlap(vertebral['bbox'], t12['bbox'], 0.9):
+                        prolog.asserta(f"from_detail({vertebral['id']}, t12)")
+        else:
+            for i, pelvis in enumerate(pelvis_list):
+                if not pelvis['enable']:
+                    continue
+                point = nearest_point(vertebral_list, pelvis)
 
-            if point is not None:
-                prolog.asserta(f"is_closest({pelvis['id']}, {point['id']})")
+                if point is not None:
+                    prolog.asserta(f"is_closest({pelvis['id']}, {point['id']})")
 
-        for i, rib in enumerate(rib_list):
-            if not rib['enable']:
-                continue
-            point = nearest_point(vertebral_list, rib)
+            for i, rib in enumerate(rib_list):
+                if not rib['enable']:
+                    continue
+                point = nearest_point(vertebral_list, rib)
 
-            if nearest_point is not None:
-                prolog.asserta(f"is_closest({rib['id']}, {point['id']})")
+                if nearest_point is not None:
+                    prolog.asserta(f"is_closest({rib['id']}, {point['id']})")
 
 
 def get_all_overlap_to_logic(data_list, threshold):

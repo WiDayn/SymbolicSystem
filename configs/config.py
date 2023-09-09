@@ -1,6 +1,6 @@
 base_path = "C:/Users/skv/PycharmProjects/SymbolicSystem"
 prolog_path = base_path + "/prolog/prolog.pl"
-dataset_path = base_path + "/dataset/test"
+dataset_path = base_path + "/dataset/temp"
 class_path = base_path + "/model/class"
 detail_path = base_path + "/model/detail"
 retrain_path = base_path + "/core/retrain/train.json"
